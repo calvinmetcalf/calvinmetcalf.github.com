@@ -29,7 +29,22 @@
 	<script async src="/scripts.js"></script>
 
 	<!-- Markup -->
-	
+	<div class="topbar">
+		<div class="fill">
+			<div class="container fixed">
+				<h3><a href="/">Welcome</a></h3>
+				<ul>
+					<% for Document in @Documents: %>
+						<% if Document.url.indexOf('/pages') == 0: %>
+						<li typeof="sioc:Page" about="<%= Document.url %>" class="<%= 'active'  if @Document.url is Document.url %>">
+							<a href="<%= Document.url %>" property="dc:title"><%= Document.title %></a>
+						</li>
+						<% end %>
+					<% end %>
+				</ul>
+			</div>
+		</div>
+	</div>
 	<div class="container">
 		<div id="content" class="content">
 			<%- @content %>
