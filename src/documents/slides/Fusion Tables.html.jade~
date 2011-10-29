@@ -108,7 +108,7 @@ title: 'Fusion Tables'
 	
 	li.slide changed the code to jade to make it more readable
 	li.slide 
-		:markdown
+		code
 			html
   			head#Head
     			meta(name='ROBOTS', content='NOINDEX,NOODP,NOARCHIVE')
