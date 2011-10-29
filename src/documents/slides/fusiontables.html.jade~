@@ -1,0 +1,22 @@
+---
+layout: 'slide'
+title: 'Fusion Tables'
+---
+
+.slide
+	h1 Mapping with Google Fusion Tables
+	
+	h2 Calvin W. Metcalf
+	h3 massDOT Office of Transportation Planning
+
+.slide
+	h2 AKA how to make a good looking powerful webmap with:
+	
+	li.slide no budget
+	li.slide no resources beyond your girlfirends spare laptop
+	li.slide no programing experience
+	li.slide litterally no knowledge about how javascript works
+	li.slide a static web server
+
+.slide
+	h2 but why?

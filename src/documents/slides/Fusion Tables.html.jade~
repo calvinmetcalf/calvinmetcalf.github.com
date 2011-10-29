@@ -1,0 +1,62 @@
+---
+layout: 'slide'
+title: 'Fusion Tables'
+---
+
+.slide
+	h1 Mapping with Google Fusion Tables
+	
+	h2 Calvin W. Metcalf
+	h3 massDOT Office of Transportation Planning
+
+.slide
+	h2 AKA how to make a good looking powerful webmap with:
+	
+	li.slide no budget
+	li.slide no resources beyond your girlfirends spare laptop
+	li.slide no programing experience
+	li.slide a static web server
+	li.slide litterally no knowledge about how javascript works
+	
+
+.slide
+	h2 but why?
+	
+	li.slide our current web maps did not look good
+	li.slide they weren't easy to update
+	li.slide they used flash
+	
+.slide
+	h2 why fusion tables
+	
+	li.slide it's free
+	li.slide it's faster then that any server we could have set up our selves easily
+	li.slide people already know how to use a google map
+	li.slide their search is great
+	li.slide their documentation is fantastic
+	li.slide they can handle a LOT of points
+	
+.slide
+	h2 the map
+	
+	li.slide our example today will be the first map I made on active construction projects
+	img(src='1.png').slide
+
+.slide
+	h2 search
+	img(src='search.png')
+	
+.slide
+	h2 zoom
+	img(src='zoom.png')
+	
+.slide
+	h2 query
+	img(src='query.png')
+	
+.slide
+	h2 download the data
+	img(src='download.png')
+
+	
+	

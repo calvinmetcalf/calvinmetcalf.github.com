@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head id="Head">
+<META NAME="ROBOTS" CONTENT="NOINDEX,NOODP,NOARCHIVE"><meta http-equiv="X-UA-Compatible" content="IE=7" />
+
+
+<script type="text/javascript" src="http://www.google.com/jsapi"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+
+<script type="text/javascript" src="projects926.js"></script>
+<link rel="stylesheet" type="text/css" href="projects926.css" />
+<link rel="icon" type="image/png"
+ href="http://www.massdot.state.ma.us/Portals/17/Images/favicon.PNG" /><title>
+
+	Active Projects
+
+
+</title></head>
+
+<body onload="initialize();addOption_list()" id="body">
+<div id="description2" >trouble viewing map?<a href="http://www.google.com/fusiontables/DataSource?dsrcid=1643954" target="_blank"> view the table on Google Fusion Tables</a> or <a href="https://www.google.com/fusiontables/api/query?sql=SELECT+*+FROM+1643954" target="_blank">Down Load the Table</a></div>
+     <div id="descriptionbox" class="hide"> <span id="togglebox"><span id="descriptionToggle" onkeypress="entertoggle(event)" onClick="toggleInfo()" tabindex="3"><b>Search</b></span><span id="descriptionToggle1" onClick="toggleInfo1()" onkeypress="entertoggle1(event)" tabindex="10"><b>Query</b></span>
+     </span>
+
+	<div id="description" class="hide"> <input type="text" id="address" style="width:16em;" value="Enter an Address or LatLong" onClick="SelectAll('address');" tabindex="4"/>
+  <input type="button" onclick="zoomtoaddress()" value="Search" tabindex="5"/><input type="button" onclick="reset()" value="Reset" tabindex="6"/></div> <div id="description1" class="hide">
+<select id="c1" style="width:18em;" onchange="changeMap();" tabindex="50">
+   			    <option value="">All Projects</option></select>
+<select id="c2" onchange="changeMap();" tabindex="60">
+   			    <option value="">All Statuses</option></select>
+<select id="c3" onchange="changeMap();" tabindex="70">
+   			    <option value="">Highway and MBTA</option></select>
+
+<select id="c4" onchange="changeMap();" tabindex="80">
+   			    <option value="">All Budget Sources</option></select></div></div><div id="map_canvas"></div>
+
+<!-- End_Module_1597 -->       
+
+    
+
+
+
+
+</body>
+
+</html>
