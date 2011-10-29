@@ -74,3 +74,8 @@ title: 'Fusion Tables'
 	li.slide geometry is in a kml format
 	li.slide esri considers points and line features to be totally seperate never mixable
 	li.slide kml pretty much considers lines to be long points
+	
+.slide
+	h2 importing into fusion tables
+	
+	

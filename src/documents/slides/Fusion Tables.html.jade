@@ -78,4 +78,30 @@ title: 'Fusion Tables'
 .slide
 	h2 importing into fusion tables
 	
+	li.slide if all you have is points, it is pretty easy to get your data in
+	li.slide just make sure your data is in wgs84 and save it as a csv with a lat and a lng collumn
+	li.slide if it isn't, then it's trickier
+
+.slide
+	h2 method 1. from esri
+	
+	li.slide you can import into fusion tables kml files upto 100 MiB
+	li.slide but it takes the atributes from the kml extended data
+	li.slide esri refuses to aknowledge that kml files have an extrended data atribute
+	li.slide make sure your data has a primary key of some sort
+	li.slide make sure that is the display field
+	li.slide then export it as a kml, and also export the atribute table as a csv
+	li.slide upload them both the fusion tables as seperate tables
+	li.slide do a merge (aka a join)
+
+.slide
+	h2 method 2. qgis
+
+	li.slide or you can save it as a shape file
+	li.slide open it with quantum gis
+	li.slide save it as a kml
+	li.slide you can just import that into fusion tables
+	li.slide this is where my g/fs old laptop came in, i had whiped it and installed ubuntu and quantum gis on it.
+	
+
 	
