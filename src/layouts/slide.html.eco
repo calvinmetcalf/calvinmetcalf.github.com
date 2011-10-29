@@ -8,7 +8,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
 	<title><%=@Document.title%></title>
-	<base href="http://calvinmetcalf.github.com/slides/<%=@Document.title%>/" />
+	<base href="http://calvinmetcalf.github.com/out/slides/<%=@Document.title%>/" />
 	<meta name="description" content="A jQuery library for modern HTML presentations" />
 	<meta name="viewport" content="width=1024, user-scalable=no" />
 	

@@ -58,5 +58,10 @@ title: 'Fusion Tables'
 	h2 download the data
 	img(src='download.png')
 
-	
+.slide
+	h2 how
+	ul
+		li.slide get the data cleaned and into fusion tables
+		li.slide write the html
+		li.slide write the javascript
 	
