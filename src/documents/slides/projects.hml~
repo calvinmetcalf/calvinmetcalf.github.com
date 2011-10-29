@@ -1,3 +1,7 @@
+---
+layout: 'default'
+title: 'Projects html'
+---
 <code>!!! 5
 html
   head#Head
