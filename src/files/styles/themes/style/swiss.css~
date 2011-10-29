@@ -3,7 +3,7 @@
 src: url('ERASMD.TTF');
 }
 .deck-container {
-  font-family: 'Erasmd', "Ubuntu", sans-serif;
+  font-family: 'Josefin', 'Erasmd', "Ubuntu", sans-serif;
   font-size: 1em;
   background: #fff;
 background-image:url('MassDOTlogoo.png');
@@ -21,7 +21,7 @@ background: #fff;
   border-bottom-color: #ccc;
 }
 .deck-container .slide h3 {
-  color: #888;
+  color: #0077d4;
 }
 .deck-container .slide pre {
   border-color: #ccc;
