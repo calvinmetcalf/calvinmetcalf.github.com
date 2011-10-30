@@ -13,22 +13,22 @@
 	<meta name="viewport" content="width=1024, user-scalable=no" />
 	
 	<!-- Core and extension CSS files -->
-	<link rel="stylesheet" href="../../scripts/core/deck.core.css" />
-	<link rel="stylesheet" href="../../scripts/extensions/goto/deck.goto.css" />
-	<link rel="stylesheet" href="../../scripts/extensions/menu/deck.menu.css" />
-	<link rel="stylesheet" href="../../scripts/extensions/navigation/deck.navigation.css" />
-	<link rel="stylesheet" href="../../scripts/extensions/status/deck.status.css" />
-	<link rel="stylesheet" href="../../scripts/extensions/hash/deck.hash.css" />
-<link rel="stylesheet" href="../../scripts/extensions/hash/deck.scale.css" />
+	<link rel="stylesheet" href="out/scripts/core/deck.core.css" />
+	<link rel="stylesheet" href="out/scripts/extensions/goto/deck.goto.css" />
+	<link rel="stylesheet" href="out/scripts/extensions/menu/deck.menu.css" />
+	<link rel="stylesheet" href="out/scripts/extensions/navigation/deck.navigation.css" />
+	<link rel="stylesheet" href="out/scripts/extensions/status/deck.status.css" />
+	<link rel="stylesheet" href="out/scripts/extensions/hash/deck.hash.css" />
+<link rel="stylesheet" href="out/scripts/extensions/hash/deck.scale.css" />
 	<link href='http://fonts.googleapis.com/css?family=Ubuntu|Josefin+Sans:600' rel='stylesheet' type='text/css' />
 	<!-- Theme CSS files (menu swaps these out) -->
-	<link rel="stylesheet" id="style-theme-link" href="../../styles/themes/style/swiss.css" />
-	<link rel="stylesheet" id="transition-theme-link" href="../../styles/themes/transition/horizontal-slide.css" />
+	<link rel="stylesheet" id="style-theme-link" href="out/styles/themes/style/swiss.css" />
+	<link rel="stylesheet" id="transition-theme-link" href="out/styles/themes/transition/horizontal-slide.css" />
 	
 	<!-- Custom CSS just for this page -->
 	
 	
-	<script src="../../scripts/modernizr.custom.js"></script>
+	<script src="out/scripts/modernizr.custom.js"></script>
 </head>
 
 <body class="deck-container"><%- @content %>
@@ -54,13 +54,13 @@
 <script>window.jQuery</script>
 
 <!-- Deck Core and extensions -->
-<script src="../../scripts/core/deck.core.js"></script>
-<script src="../../scripts/extensions/menu/deck.menu.js"></script>
-<script src="../../scripts/extensions/goto/deck.goto.js"></script>
-<script src="../../scripts/extensions/status/deck.status.js"></script>
-<script src="../../scripts/extensions/navigation/deck.navigation.js"></script>
-<script src="../../scripts/extensions/hash/deck.hash.js"></script>
-<script src="../../scripts/extensions/scale/deck.scale.js"></script>
+<script src="out/scripts/core/deck.core.js"></script>
+<script src="out/scripts/extensions/menu/deck.menu.js"></script>
+<script src="out/scripts/extensions/goto/deck.goto.js"></script>
+<script src="out/scripts/extensions/status/deck.status.js"></script>
+<script src="out/scripts/extensions/navigation/deck.navigation.js"></script>
+<script src="out/scripts/extensions/hash/deck.hash.js"></script>
+<script src="out/scripts/extensions/scale/deck.scale.js"></script>
 <script type="text/javascript">
 $(function() {
 	// Deck initialization
