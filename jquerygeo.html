@@ -31,6 +31,8 @@
       right: 0;
       bottom: 0;
     }
+
+    td:first-child { font-weight: bold }
   </style>
 </head>
 <body>
@@ -39,7 +41,9 @@
     </div>
     <div class="info">
       <h1>Voting Districts</h1>
-      <p></p>
+      <p>Your voting district for your current location is <span data-text="Name">( searching... )</span>.</p>
+      <div data-html="Description" style="display: none;">
+      </div>
     </div>
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
@@ -48,10 +52,33 @@
   <script>
     $( function () {
       // create a map
-      var map = $("#map").geomap({
-        center: [-71.0595678, 42.3604823],
-        zoom: 8
-      });
+      var map,
+          userLoc;
+
+      function initMap( center, zoom ) {
+        map = $( "#map" ).geomap( {
+          center: center || [ -71.0595678, 42.3604823 ],
+          zoom: zoom || 8
+        } );
+      }
+
+      if ( navigator.geolocation ) {
+        navigator.geolocation.getCurrentPosition( function ( p ) {
+          initMap( [ p.coords.longitude, p.coords.latitude ], 15 );
+
+          userLoc = {
+            type: "Point",
+            coordinates: [ p.coords.longitude, p.coords.latitude ]
+          };
+
+          map.geomap( "append", userLoc );
+
+        }, function ( error ) {
+          initMap( );
+        });
+      } else {
+        initMap( );
+      }
 
       $.ajax( {
         //url: "https://github.com/calvinmetcalf/calvinmetcalf.github.com/blob/master/vd.geojson?raw=true",
@@ -59,6 +86,22 @@
         dataType: "json",
         success: function( result ) {
           map.geomap( "append", result );
+
+          if ( userLoc ) {
+            var shapes = map.geomap( "find", userLoc, 3 );
+
+            if ( shapes.length == 2 ) {
+              var votingDistrict = shapes[0].type == "Point" ? shapes[1] : shapes[0];
+
+              $( "[data-text='Name']" ).text( votingDistrict.properties.Name );
+              $( "[data-html='Description']" ).html( votingDistrict.properties.Description ).show();
+
+
+
+
+            }
+          }
+
         },
         error: function( xhr ) {
           alert( xhr.statusText );
