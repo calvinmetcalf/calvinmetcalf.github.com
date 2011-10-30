@@ -1,4 +1,4 @@
-<html><script type='text/javascript' src='http://www.giscloud.com/api.js?v=1' ></script>
+<script type='text/javascript' src='http://www.giscloud.com/api.js?v=1' ></script>
 <div id="fn_embed_map" style="border:1px solid #C5C5C5;width:800px; height:500px;">
   
 </div>
@@ -9,4 +9,4 @@ new FnEmbedMAP({map:19512, container:"fn_embed_map", slider:true, onload:functio
 		this.viewer.setViewBound(-74.07617187500001, 42.98590087890625, -69.69262695312501, 40.32171630859375);
 }});
 -->
-</script></html>
+</script>
