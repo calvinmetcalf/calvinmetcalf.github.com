@@ -40,64 +40,61 @@
     <div id="map">
     </div>
     <div class="info">
-      <h1>Voting Districts</h1>
-      <p>Your voting district for your current location is <span data-text="Name">( searching... )</span>.</p>
+      <h1>Voting Districts by % White</h1>
+      <h2 data-text="Name"></h2>
       <div data-html="Description" style="display: none;">
       </div>
     </div>
   </div>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
   <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
-  <script src="http://jquerygeo.com/test/jquery.geo-test.min.js"></script>
+  <script src="http://jquerygeo.com/test/jquery.geo-test.js"></script>
   <script>
     $( function () {
       // create a map
-      var map,
-          userLoc;
+      var selection,
+          map = $( "#map" ).geomap( {
+            center: [ -71.0595678, 42.3604823 ],
+            zoom: 8,
+            click: function( e, geo ) {
+              //if ( selection ) {
+                //map.geomap( "remove", selection );
+              //}
 
-      function initMap( center, zoom ) {
-        map = $( "#map" ).geomap( {
-          center: center || [ -71.0595678, 42.3604823 ],
-          zoom: zoom || 8
-        } );
-      }
+              var district = map.geomap( "find", geo, 1 );
 
-      if ( navigator.geolocation ) {
-        navigator.geolocation.getCurrentPosition( function ( p ) {
-          initMap( [ p.coords.longitude, p.coords.latitude ], 15 );
+              if ( district.length > 0 ) {
+                debugger;
+                selection = $.extend( { }, district[ 0 ] );
 
-          userLoc = {
-            type: "Point",
-            coordinates: [ p.coords.longitude, p.coords.latitude ]
-          };
+                $( "[data-text='Name']" ).text( selection.properties.Name );
+                $( "[data-html='Description']" ).html( selection.properties.Description ).show();
 
-          map.geomap( "append", userLoc );
+                map.geomap( "option", "bbox", $.geo.scaleBy( $.geo.bbox( selection ), 2 ) );
+                map.geomap( "append", selection, { color: "red" } );
+              }
+            }
+          } );
 
-        }, function ( error ) {
-          initMap( );
-        });
-      } else {
-        initMap( );
-      }
+      map.geomap( "shapeStyle", { strokeWidth: "0px", fillOpacity: .8 } );
 
       $.ajax( {
         //url: "https://github.com/calvinmetcalf/calvinmetcalf.github.com/blob/master/vd.geojson?raw=true",
         url: "http://data.jquerygeo.com/ma-voting-districts.geojson",
         dataType: "json",
         success: function( result ) {
-          map.geomap( "append", result );
+          if ( result && result.type == "FeatureCollection" ) {
+            $.each( result.features, function( ) {
+              var infoTable = $( this.properties.Description ),
+                  pop = parseInt( infoTable.find( "tr:eq(0) td:eq(1)" ).text() ),
+                  white = parseInt( infoTable.find( "tr:eq(1) td:eq(1)" ).text() ),
+                  pctWhite = Math.ceil( ( white / pop ) * 256 );
 
-          if ( userLoc ) {
-            var shapes = map.geomap( "find", userLoc, 3 );
+                  map.geomap( "append", this, { color: "rgb( " + pctWhite + ", " + pctWhite + ", " + pctWhite + " )" } , false );
+            } );
 
-            if ( shapes.length == 2 ) {
-              var votingDistrict = shapes[0].type == "Point" ? shapes[1] : shapes[0];
-
-              $( "[data-text='Name']" ).text( votingDistrict.properties.Name );
-              $( "[data-html='Description']" ).html( votingDistrict.properties.Description ).show();
-            }
+            map.geomap( "refresh" );
           }
-
         },
         error: function( xhr ) {
           alert( xhr.statusText );
