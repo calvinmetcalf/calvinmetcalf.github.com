@@ -43,8 +43,9 @@
 </div>
 
 <ul><a href="vd.html"><li>fusion precincts</li></a>
-<a href="jquerygeo.html"><li>jquery geo</li></a>
-<a href="vd.geojson"><li>geojson data</li></a>
+<a href="jquerygeo.html"><li>jquery geo precincts</li></a>
+<a href="vd.geojson"><li>geojson data for pricincts</li></a>
+<a href="http://dl.dropbox.com/u/37626989/roadinv.geojson"><li>road inv</a></li>
 <a href="http://calvinmetcalf.github.com/out/slides/Fusion%20Tables.html"><li>presentation</li></a>
 <a href="http://services.massdot.state.ma.us/maptemplate/projects/"><li>the map</li></a>
 <a href="http://calvinmetcalf.github.com/out/slides/Fusion Tables/projects.jade"><li>html as jade</li></a><a href="http://calvinmetcalf.github.com/out/slides/Fusion Tables/projects.coffee"><li>javascript as coffee script</li></a>
