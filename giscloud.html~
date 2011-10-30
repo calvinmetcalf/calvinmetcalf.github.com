@@ -1,12 +1,232 @@
-<html><script type='text/javascript' src='http://www.giscloud.com/api.js?v=1' ></script>
-<div id="fn_embed_map" style="border:1px solid #C5C5C5;width:800px; height:500px;">
-  
-</div>
-<script type="text/javascript" >
-<!--
-new FnEmbedMAP({map:19512, container:"fn_embed_map", slider:true, onload:function()
-	{
-		this.viewer.setViewBound(-74.07617187500001, 42.98590087890625, -69.69262695312501, 40.32171630859375);
-}});
--->
-</script></html>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style type="text/css">
+            body, html, #mapviewer, #layerlist, #info, #toolbar {
+                margin: 0px; padding: 0px; overflow:hidden;
+            }
+
+            #mapviewer, #layerlist, #info, #toolbar { position: absolute; }
+
+            #layerlist, #info { overflow: auto; height: 100%; }
+
+            #layerlist { top: 0px; left: 0px; border-right: solid 1px #ccc; }
+            #info { top: 0px; right: 0px; }
+            #toolbar { top: 0px; }
+
+            #toolbar { border-bottom: thin solid #ccc; }
+
+            #info {
+                font-family: sans-serif;
+                font-size: 0.9em;
+                color: #333;
+                border-left: solid 1px #ccc;
+            }
+
+            #info table {
+                border-spacing: 0;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            #info div {
+                height: 24px;
+                border-bottom: thin solid #ccc;
+                text-align: right; width: 100%;
+            }
+
+            #info a {
+                font-size: 0.8em;
+                margin-right: 0.8em;
+                vertical-align: middle;
+            }
+
+            #info tr {
+                border-bottom: thin solid #ccc;
+            }
+
+            #info th {
+                padding: 0.3em 0.7em;
+                height: 2em;
+                border-right: thin solid #ccc;
+            }
+
+            #info td {
+                padding: 0.2em 0.5em;
+                height: 1em;
+                border-right: thin solid #ccc;
+            }
+
+        </style>
+        <script type="text/javascript" src="http://api.giscloud.com/1/api.js"></script>
+        <script type="text/javascript">
+            var viewer, mapId, includeToolbar, includeLayerList, toolbar, layerList, bounds, $,
+                setLayout, showInfo, hideInfo, resizing, infoShowing = false;
+
+            $ = giscloud.exposeJQuery();
+
+            // config
+            mapId = '19512';
+            includeToolbar = true;
+            includeLayerList = true;
+            bounds = new giscloud.Bounds(-74.62173578906251, 43.50255628515623, -68.80996821093751, 40.83837171484373);
+
+            hideInfo = function () {
+                infoShowing = false;
+                setLayout();
+            };
+
+            showInfo = function (layerId, featureId) {
+
+                if (!infoShowing) {
+                    infoShowing = true;
+                    setLayout();
+                }
+
+                // remove existing rows
+                $("#infoTable > tbody > tr").remove();
+
+                // show that you're busy
+                $("#infoTable").busy();
+
+                // get data
+                giscloud.features.byId(layerId, featureId)
+                .done(function (f) {
+                    var tbody = $("#infoTable > tbody");
+
+                    // not busy anymore
+                    $("#infoTable").busy("hide");
+
+                    // add table rows
+                    $.each(f && f.data, function (i, item) {
+                        tbody.append(
+                            "<tr><td>" + i + "<\/td>" + "<td>" + item + "<\/td><\/tr>"
+                        );
+                    });
+                });
+            };
+
+            setLayout = function () {
+                var layerListWidth, viewerWidth, toolbarHeight, infoWidth;
+
+                layerListWidth = includeLayerList ? "25%" : 0;
+                infoWidth = infoShowing ? "25%" : 0;
+                toolbarHeight = includeToolbar ? 24 : 0;
+
+                if (includeLayerList) {
+                    $("#layerlist")
+                    .width(layerListWidth)
+                    .height("100%")
+                    .show();
+                    layerListWidth = $("#layerlist").width() + 1;
+                }
+
+                $("#info").width(infoWidth);
+                if (infoShowing) {
+                    $("#info").show();
+                } else {
+                    $("#info").hide();
+                }
+
+                viewerWidth = $(window).width() - layerListWidth - $("#info").width() - 1;
+
+                if (includeToolbar) {
+                    $("#toolbar")
+                    .width(viewerWidth)
+                    .height(toolbarHeight)
+                    .css("left", layerListWidth)
+                    .show();
+                    toolbarHeight = toolbarHeight + 1;
+                }
+
+                $("#mapviewer")
+                .width(viewerWidth)
+                .height(includeToolbar ? $(window).height() - toolbarHeight : "100%")
+                .css("top", toolbarHeight)
+                .css("left", layerListWidth);
+
+            };
+
+            // start when ready
+            giscloud.ready(function() {
+                var b;
+                // set layout
+                setLayout();
+
+                // set viewer
+                viewer = new giscloud.Viewer("mapviewer", mapId, { slider: true });
+                viewer.bounds(bounds);
+
+                // selection event handler
+                if (includeToolbar) {
+                    viewer.loading.done(function () {
+                        this.selection.featureAdd(function (f) {
+                            showInfo(f.layerId, f.featureId);
+                        });
+                    });
+                }
+
+                // set toolbar
+                if (includeToolbar) {
+
+                    var defaultTools;
+                    if (flashnavigator.html5)
+                      defaultTools = ["pan", "zoom", "full", "info"]
+                    else
+                      defaultTools = ["pan", "zoom", "full", "measure", "info"]
+
+                    toolbar = new giscloud.ui.Toolbar({
+                        viewer: viewer,
+                        container: "toolbar",
+                        defaultTools: defaultTools
+                    });
+                    viewer.ready(function () {
+                        toolbar.tools.info.activate();
+                    });
+                }
+
+                // set layer list
+                if (includeLayerList) {
+                    viewer.ready(function () {
+                        layerList = new giscloud.ui.LayerList(viewer, "layerlist");
+                    });
+                }
+
+                // bind the resize event
+                $(window).resize(function () {
+                    if (resizing) {
+                        clearTimeout(resizing);
+                    }
+                    resizing = setTimeout(function () {
+                        resizing = null;
+                        setLayout();
+                    }, 300);
+                });
+
+            });
+
+        </script>
+    </head>
+	<body>
+
+        <div id="layerlist" style="display: none;"></div>
+        <div id="toolbar" style="display: none;"></div>
+        <div id="mapviewer"></div>
+        <div id="info" style="display: none;">
+            <div><a href="#" onclick="hideInfo(); return false;">Hide</a></div>
+            <table id="infoTable">
+                <thead>
+                    <tr>
+
+                        <th>Attribute</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+	</body>
+</html>
+
