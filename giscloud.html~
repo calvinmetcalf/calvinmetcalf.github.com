@@ -69,7 +69,7 @@
             mapId = '19512';
             includeToolbar = true;
             includeLayerList = true;
-            bounds = new giscloud.Bounds(-74.62173578906251, 43.50255628515623, -68.80996821093751, 40.83837171484373);
+            bounds = new giscloud.Bounds(-73.7457275390625, 43.7200927734375, -67.9339599609375, 41.055908203125);
 
             hideInfo = function () {
                 infoShowing = false;
