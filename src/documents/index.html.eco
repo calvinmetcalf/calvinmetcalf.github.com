@@ -1,0 +1,23 @@
+--- yaml
+layout: 'default'
+title: 'Home'
+---
+
+<!-- Main hero unit for a primary marketing message or call to action -->
+<div class="hero-unit">
+	<h1>calvin on github</h1>
+	<p>mainly being used to host some files
+	</p>
+	
+</div>
+<h2>Where Camp Stuff</h2>
+<ul>
+	<% for Document in @Documents: %>
+		<% if Document.url.indexOf('/slides') == 0: %>
+		<li typeof="sioc:Page" about="<%= Document.url %>" class="<%= 'active'  if @Document.url is Document.url %>">
+			<a href="<%= Document.url %>" property="dc:title"><%= Document.title %></a>
+		</li>
+		<% end %>
+	<% end %>
+</ul>
+

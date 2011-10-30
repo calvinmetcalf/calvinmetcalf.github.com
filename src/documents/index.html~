@@ -11,8 +11,14 @@ title: 'Home'
 	
 </div>
 
+
 <ul>
-<a href="http://calvinmetcalf.github.com/slides/Fusion%20Tables.html"><li>presentation</li></a>
-<a href="http://services.massdot.state.ma.us/maptemplate/projects/"><li>the map</li></a>
-<a href="http://calvinmetcalf.github.com/slides/Fusion Tables/projects.jade"><li>html as jade</li></a><a href="http://calvinmetcalf.github.com/slides/Fusion Tables/projects.coffee"><li>javascript as coffee script</li></a>
+	<% for Document in @Documents: %>
+		<% if Document.url.indexOf('/slides') == 0: %>
+		<li typeof="sioc:Page" about="<%= Document.url %>" class="<%= 'active'  if @Document.url is Document.url %>">
+			<a href="<%= Document.url %>" property="dc:title"><%= Document.title %></a>
+		</li>
+		<% end %>
+	<% end %>
 </ul>
+
