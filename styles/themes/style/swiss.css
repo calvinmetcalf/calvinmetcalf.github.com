@@ -1,5 +1,9 @@
+@font-face
+{font-family: Erasmd;
+src: url('ERASMD.TTF');
+}
 .deck-container {
-  font-family: "Ubuntu", sans-serif;
+  font-family: 'Josefin Sans', "Ubuntu", sans-serif;
   font-size: 1em;
   background: #fff;
 background-image:url('MassDOTlogoo.png');
