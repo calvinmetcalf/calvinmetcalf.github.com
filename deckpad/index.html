@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    
+    <title>DeckDown</title>
+    <meta name="description" content="A jQuery library for modern HTML presentations" />
+    <meta name="viewport" content="width=1024, user-scalable=no" />
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <!-- Core and extension CSS files -->
+    <link rel="stylesheet" href="/deckjs/core/deck.core.css" />
+    <link rel="stylesheet" href="/deckjs/extensions/goto/deck.goto.css" />
+    <link rel="stylesheet" href="/deckjs/extensions/menu/deck.menu.css" />
+    <link rel="stylesheet" href="/deckjs/extensions/navigation/deck.navigation.css" />
+    <link rel="stylesheet" href="/deckjs/extensions/status/deck.status.css" />
+    <link rel="stylesheet" href="/deckjs/extensions/hash/deck.hash.css" />
+
+    
+    <!-- Theme CSS files (menu swaps these out) -->
+    <link rel="stylesheet" id="style-theme-link" href="/deckjs/themes/style/swiss.css" />
+    <link rel="stylesheet" id="transition-theme-link" href="deckjs/themes/transition/horizontal-slide.css" />
+
+     
+    <!-- Custom CSS just for this page -->
+    
+    
+    <script src="/deckjs/modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container"><div id="title-slide" class="slide"><h1>DeckDown!</h1><h2>Deckjs easy(er)</h2></div><div id="huh" class="slide"><h2>what?</h2><li id="TheMoreYouKnow" class="slide">its <a href="http://imakewebthings.github.com/deck.js/">deck.js</a></li><li id="easy" class="slide">all set for you to deploy somehwere</li><li id="likeyoursister" class="slide">all you need to do is name your presentation and go </li></div><div id="how" class="slide"><h2>details</h2><li id="themes" class="slide">there are 4 layouts each is a differnt theme</li><li id="intro" class="slide">there is a very nice <a href="deck">intro to deck.js</a></li><li id="yes" class="slide">that layout is called intro  </li></div><div id="slider" class="slide"><h2>make a slide</h2><code>.slide#witty-title-for-the-browser-bar</code><br/><code>h2 slide title</code><br/><code>li regular list item</code><br/><code>li.slide#wittier-title list item that comes in latter</code></div><div id="fin" class="slide"><h2>for the super lazy</h2><li id="big" class="slide">I threw in <a href="big">big</a> from 
+<a href="https://github.com/tmcw">Tom MacWright</a></li><li id="different" class="slide">that one is different, just use a div for each slide ie #slide not .slide </li></div>
+
+<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+<p class="deck-status">
+    <span class="deck-status-current"></span>
+    /
+    <span class="deck-status-total"></span>
+</p>
+
+<form action="." method="get" class="goto-form">
+    <label for="goto-slide">Go to slide:</label>
+    <input type="number" name="slidenum" id="goto-slide">
+    <input type="submit" value="Go">
+</form>
+
+<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.js"></script>
+<script>window.jQuery</script>
+
+<!-- Deck Core and extensions -->
+<script src="/deckjs/core/deck.core.js"></script>
+<script src="/deckjs/extensions/menu/deck.menu.js"></script>
+<script src="/deckjs/extensions/goto/deck.goto.js"></script>
+<script src="/deckjs/extensions/status/deck.status.js"></script>
+<script src="/deckjs/extensions/navigation/deck.navigation.js"></script>
+<script src="/deckjs/extensions/hash/deck.hash.js"></script>
+<script src="/deckjs/extensions/scale/deck.scale.js"></script>
+<script type="text/javascript">
+$(function() {
+    // Deck initialization
+    $.deck('.slide');
+    
+    $('#style-themes').change(function() {
+        $('#style-theme-link').attr('href', $(this).val());
+    });
+    
+    $('#transition-themes').change(function() {
+        $('#transition-theme-link').attr('href', $(this).val());
+    });
+
+    $('pre').click(function (){
+    $(this).toggleClass('highlighted');
+    });
+});
+</script>
+
+</body>
+</html>
