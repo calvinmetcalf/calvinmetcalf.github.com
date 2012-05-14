@@ -12,7 +12,8 @@ $.get(yqlurl + "'" + encodeURIComponent(eURL) + "'",
         function(data){
           var v = data.query.results.rss.channel.item;
              $.each(v,function(i,ev){
-                 var stuff = '<tr><td>' + i + '</td><td>' + ev.title + '</td><td>' + ev.description + '</td><td>' + ev.link + '</td></tr>';
+                 var pts = ev.description.split("<br/>");
+                 var stuff = '<tr><td>' + i + '</td><td>' + ev.title + '</td><td>' + pts[0] + '</td><td>' + pts[1] + '</td><td>' + pts[2] + '</td><td>' + pts[3] +'</td><td>' + ev.link + '</td></tr>';
                  
                  $('.events').append(stuff);
              }
