@@ -12,11 +12,12 @@ $.get(yqlurl + "'" + encodeURIComponent(eURL) + "'",
         function(data){
           var v = data.query.results.rss.channel.item;
              $.each(v,function(i,ev){
-                 var stuff = '<div class="row-fluid"><h2>' + ev.title + '</h2><p>' + ev.description + '</p><p><a class="btn btn-success" href="' + ev.link + '">View details &raquo;</a></p></div>';
+                 var stuff = '<tr><td>' + i + '</td><td>' + ev.title + '</td><td>' + ev.description + '</td><td>' + ev.link + '</td></tr>';
                  
                  $('.events').append(stuff);
              }
             );
+             $(".table").tablesorter();
         },"jsonp");
-   
+      
 });
