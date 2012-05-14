@@ -1,8 +1,8 @@
 /* Author:
 Calvin Metcalf
 */
-//var eURL = 'http://baystatebikeweek.org/events/rss/';
-var eURL = 'calvinmetcalf.github.com/bf.xml';
+var eURL = 'http://baystatebikeweek.org/events/rss/';
+//var eURL = 'calvinmetcalf.github.com/bf.xml';
 
  var yqlurl = 'http://query.yahooapis.com/v1/public/yql?format=json&q=select%20*%20from%20xml%20where%20url%3D';
 
