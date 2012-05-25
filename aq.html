@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>STIP Air Quality Status</title> <style>
+       /*!
+ * Bootstrap v2.0.3
+ *
+ * Copyright 2012 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world @twitter by @mdo and @fat.
+ */
+.clearfix{*zoom:1;}.clearfix:before,.clearfix:after{display:table;content:"";}
+.clearfix:after{clear:both;}
+.hide-text{font:0/0 a;color:transparent;text-shadow:none;background-color:transparent;border:0;}
+.input-block-level{display:block;width:100%;min-height:28px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;}
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
+audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
+audio:not([controls]){display:none;}
+html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
+a:focus{outline:thin dotted #333;outline:5px auto -webkit-focus-ring-color;outline-offset:-2px;}
+a:hover,a:active{outline:0;}
+sub,sup{position:relative;font-size:75%;line-height:0;vertical-align:baseline;}
+sup{top:-0.5em;}
+sub{bottom:-0.25em;}
+img{max-width:100%;vertical-align:middle;border:0;-ms-interpolation-mode:bicubic;}
+button,input,select,textarea{margin:0;font-size:100%;vertical-align:middle;}
+button,input{*overflow:visible;line-height:normal;}
+button::-moz-focus-inner,input::-moz-focus-inner{padding:0;border:0;}
+button,input[type="button"],input[type="reset"],input[type="submit"]{cursor:pointer;-webkit-appearance:button;}
+input[type="search"]{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box;-webkit-appearance:textfield;}
+input[type="search"]::-webkit-search-decoration,input[type="search"]::-webkit-search-cancel-button{-webkit-appearance:none;}
+textarea{overflow:auto;vertical-align:top;}
+body{margin:0;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;color:#333333;background-color:#ffffff;}
+a{color:#0088cc;text-decoration:none;}
+a:hover{color:#005580;text-decoration:underline;}
+.row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";}
+.row:after{clear:both;}
+[class*="span"]{float:left;margin-left:20px;}
+.container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width:940px;}
+.span12{width:940px;}
+.span11{width:860px;}
+.span10{width:780px;}
+.span9{width:700px;}
+.span8{width:620px;}
+.span7{width:540px;}
+.span6{width:460px;}
+.span5{width:380px;}
+.span4{width:300px;}
+.span3{width:220px;}
+.span2{width:140px;}
+.span1{width:60px;}
+.offset12{margin-left:980px;}
+.offset11{margin-left:900px;}
+.offset10{margin-left:820px;}
+.offset9{margin-left:740px;}
+.offset8{margin-left:660px;}
+.offset7{margin-left:580px;}
+.offset6{margin-left:500px;}
+.offset5{margin-left:420px;}
+.offset4{margin-left:340px;}
+.offset3{margin-left:260px;}
+.offset2{margin-left:180px;}
+.offset1{margin-left:100px;}
+.row-fluid{width:100%;*zoom:1;}.row-fluid:before,.row-fluid:after{display:table;content:"";}
+.row-fluid:after{clear:both;}
+.row-fluid [class*="span"]{display:block;width:100%;min-height:28px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;float:left;margin-left:2.127659574%;*margin-left:2.0744680846382977%;}
+.row-fluid [class*="span"]:first-child{margin-left:0;}
+.row-fluid .span12{width:99.99999998999999%;*width:99.94680850063828%;}
+.row-fluid .span11{width:91.489361693%;*width:91.4361702036383%;}
+.row-fluid .span10{width:82.97872339599999%;*width:82.92553190663828%;}
+.row-fluid .span9{width:74.468085099%;*width:74.4148936096383%;}
+.row-fluid .span8{width:65.95744680199999%;*width:65.90425531263828%;}
+.row-fluid .span7{width:57.446808505%;*width:57.3936170156383%;}
+.row-fluid .span6{width:48.93617020799999%;*width:48.88297871863829%;}
+.row-fluid .span5{width:40.425531911%;*width:40.3723404216383%;}
+.row-fluid .span4{width:31.914893614%;*width:31.8617021246383%;}
+.row-fluid .span3{width:23.404255317%;*width:23.3510638276383%;}
+.row-fluid .span2{width:14.89361702%;*width:14.8404255306383%;}
+.row-fluid .span1{width:6.382978723%;*width:6.329787233638298%;}
+.container{margin-right:auto;margin-left:auto;*zoom:1;}.container:before,.container:after{display:table;content:"";}
+.container:after{clear:both;}
+.container-fluid{padding-right:20px;padding-left:20px;*zoom:1;}.container-fluid:before,.container-fluid:after{display:table;content:"";}
+.container-fluid:after{clear:both;}
+p{margin:0 0 9px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;line-height:18px;}p small{font-size:11px;color:#999999;}
+.lead{margin-bottom:18px;font-size:20px;font-weight:200;line-height:27px;}
+h1,h2,h3,h4,h5,h6{margin:0;font-family:inherit;font-weight:bold;color:inherit;text-rendering:optimizelegibility;}h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-weight:normal;color:#999999;}
+h1{font-size:30px;line-height:36px;}h1 small{font-size:18px;}
+h2{font-size:24px;line-height:36px;}h2 small{font-size:18px;}
+h3{font-size:18px;line-height:27px;}h3 small{font-size:14px;}
+h4,h5,h6{line-height:18px;}
+h4{font-size:14px;}h4 small{font-size:12px;}
+h5{font-size:12px;}
+h6{font-size:11px;color:#999999;text-transform:uppercase;}
+.page-header{padding-bottom:17px;margin:18px 0;border-bottom:1px solid #eeeeee;}
+.page-header h1{line-height:1;}
+ul,ol{padding:0;margin:0 0 9px 25px;}
+ul ul,ul ol,ol ol,ol ul{margin-bottom:0;}
+ul{list-style:disc;}
+ol{list-style:decimal;}
+li{line-height:18px;}
+ul.unstyled,ol.unstyled{margin-left:0;list-style:none;}
+dl{margin-bottom:18px;}
+dt,dd{line-height:18px;}
+dt{font-weight:bold;line-height:17px;}
+dd{margin-left:9px;}
+.dl-horizontal dt{float:left;width:120px;clear:left;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.dl-horizontal dd{margin-left:130px;}
+hr{margin:18px 0;border:0;border-top:1px solid #eeeeee;border-bottom:1px solid #ffffff;}
+strong{font-weight:bold;}
+em{font-style:italic;}
+.muted{color:#999999;}
+abbr[title]{cursor:help;border-bottom:1px dotted #ddd;}
+abbr.initialism{font-size:90%;text-transform:uppercase;}
+blockquote{padding:0 0 0 15px;margin:0 0 18px;border-left:5px solid #eeeeee;}blockquote p{margin-bottom:0;font-size:16px;font-weight:300;line-height:22.5px;}
+blockquote small{display:block;line-height:18px;color:#999999;}blockquote small:before{content:'\2014 \00A0';}
+blockquote.pull-right{float:right;padding-right:15px;padding-left:0;border-right:5px solid #eeeeee;border-left:0;}blockquote.pull-right p,blockquote.pull-right small{text-align:right;}
+q:before,q:after,blockquote:before,blockquote:after{content:"";}
+address{display:block;margin-bottom:18px;font-style:normal;line-height:18px;}
+small{font-size:100%;}
+cite{font-style:normal;}
+table{max-width:100%;background-color:transparent;border-collapse:collapse;border-spacing:0;}
+.table{width:100%;margin-bottom:18px;}.table th,.table td{padding:8px;line-height:18px;text-align:left;vertical-align:top;border-top:1px solid #dddddd;}
+.table th{font-weight:bold;}
+.table thead th{vertical-align:bottom;}
+.table caption+thead tr:first-child th,.table caption+thead tr:first-child td,.table colgroup+thead tr:first-child th,.table colgroup+thead tr:first-child td,.table thead:first-child tr:first-child th,.table thead:first-child tr:first-child td{border-top:0;}
+.table tbody+tbody{border-top:2px solid #dddddd;}
+.table-condensed th,.table-condensed td{padding:4px 5px;}
+.table-bordered{border:1px solid #dddddd;border-collapse:separate;*border-collapse:collapsed;border-left:0;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;}.table-bordered th,.table-bordered td{border-left:1px solid #dddddd;}
+.table-bordered caption+thead tr:first-child th,.table-bordered caption+tbody tr:first-child th,.table-bordered caption+tbody tr:first-child td,.table-bordered colgroup+thead tr:first-child th,.table-bordered colgroup+tbody tr:first-child th,.table-bordered colgroup+tbody tr:first-child td,.table-bordered thead:first-child tr:first-child th,.table-bordered tbody:first-child tr:first-child th,.table-bordered tbody:first-child tr:first-child td{border-top:0;}
+.table-bordered thead:first-child tr:first-child th:first-child,.table-bordered tbody:first-child tr:first-child td:first-child{-webkit-border-top-left-radius:4px;border-top-left-radius:4px;-moz-border-radius-topleft:4px;}
+.table-bordered thead:first-child tr:first-child th:last-child,.table-bordered tbody:first-child tr:first-child td:last-child{-webkit-border-top-right-radius:4px;border-top-right-radius:4px;-moz-border-radius-topright:4px;}
+.table-bordered thead:last-child tr:last-child th:first-child,.table-bordered tbody:last-child tr:last-child td:first-child{-webkit-border-radius:0 0 0 4px;-moz-border-radius:0 0 0 4px;border-radius:0 0 0 4px;-webkit-border-bottom-left-radius:4px;border-bottom-left-radius:4px;-moz-border-radius-bottomleft:4px;}
+.table-bordered thead:last-child tr:last-child th:last-child,.table-bordered tbody:last-child tr:last-child td:last-child{-webkit-border-bottom-right-radius:4px;border-bottom-right-radius:4px;-moz-border-radius-bottomright:4px;}
+.table-striped tbody tr:nth-child(odd) td,.table-striped tbody tr:nth-child(odd) th{background-color:#c7c7c7;}
+.table tbody tr:hover td,.table tbody tr:hover th{background-color:#f5f5f5;}
+table .span1{float:none;width:44px;margin-left:0;}
+table .span2{float:none;width:124px;margin-left:0;}
+table .span3{float:none;width:204px;margin-left:0;}
+table .span4{float:none;width:284px;margin-left:0;}
+table .span5{float:none;width:364px;margin-left:0;}
+table .span6{float:none;width:444px;margin-left:0;}
+table .span7{float:none;width:524px;margin-left:0;}
+table .span8{float:none;width:604px;margin-left:0;}
+table .span9{float:none;width:684px;margin-left:0;}
+table .span10{float:none;width:764px;margin-left:0;}
+table .span11{float:none;width:844px;margin-left:0;}
+table .span12{float:none;width:924px;margin-left:0;}
+table .span13{float:none;width:1004px;margin-left:0;}
+table .span14{float:none;width:1084px;margin-left:0;}
+table .span15{float:none;width:1164px;margin-left:0;}
+table .span16{float:none;width:1244px;margin-left:0;}
+table .span17{float:none;width:1324px;margin-left:0;}
+table .span18{float:none;width:1404px;margin-left:0;}
+table .span19{float:none;width:1484px;margin-left:0;}
+table .span20{float:none;width:1564px;margin-left:0;}
+table .span21{float:none;width:1644px;margin-left:0;}
+table .span22{float:none;width:1724px;margin-left:0;}
+table .span23{float:none;width:1804px;margin-left:0;}
+table .span24{float:none;width:1884px;margin-left:0;}
+.hidden{display:none;visibility:hidden;}
+.visible-phone{display:none !important;}
+.visible-tablet{display:none !important;}
+.hidden-desktop{display:none !important;}
+@media (max-width:767px){.visible-phone{display:inherit !important;} .hidden-phone{display:none !important;} .hidden-desktop{display:inherit !important;} .visible-desktop{display:none !important;}}@media (min-width:768px) and (max-width:979px){.visible-tablet{display:inherit !important;} .hidden-tablet{display:none !important;} .hidden-desktop{display:inherit !important;} .visible-desktop{display:none !important ;}}@media (max-width:480px){.nav-collapse{-webkit-transform:translate3d(0, 0, 0);} .page-header h1 small{display:block;line-height:18px;} input[type="checkbox"],input[type="radio"]{border:1px solid #ccc;} .form-horizontal .control-group>label{float:none;width:auto;padding-top:0;text-align:left;} .form-horizontal .controls{margin-left:0;} .form-horizontal .control-list{padding-top:0;} .form-horizontal .form-actions{padding-left:10px;padding-right:10px;} .modal{position:absolute;top:10px;left:10px;right:10px;width:auto;margin:0;}.modal.fade.in{top:auto;} .modal-header .close{padding:10px;margin:-10px;} .carousel-caption{position:static;}}@media (max-width:767px){body{padding-left:20px;padding-right:20px;} .navbar-fixed-top,.navbar-fixed-bottom{margin-left:-20px;margin-right:-20px;} .container-fluid{padding:0;} .dl-horizontal dt{float:none;clear:none;width:auto;text-align:left;} .dl-horizontal dd{margin-left:0;} .container{width:auto;} .row-fluid{width:100%;} .row,.thumbnails{margin-left:0;} [class*="span"],.row-fluid [class*="span"]{float:none;display:block;width:auto;margin-left:0;} .input-large,.input-xlarge,.input-xxlarge,input[class*="span"],select[class*="span"],textarea[class*="span"],.uneditable-input{display:block;width:100%;min-height:28px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;} .input-prepend input,.input-append input,.input-prepend input[class*="span"],.input-append input[class*="span"]{display:inline-block;width:auto;}}@media (min-width:768px) and (max-width:979px){.row{margin-left:-20px;*zoom:1;}.row:before,.row:after{display:table;content:"";} .row:after{clear:both;} [class*="span"]{float:left;margin-left:20px;} .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width:724px;} .span12{width:724px;} .span11{width:662px;} .span10{width:600px;} .span9{width:538px;} .span8{width:476px;} .span7{width:414px;} .span6{width:352px;} .span5{width:290px;} .span4{width:228px;} .span3{width:166px;} .span2{width:104px;} .span1{width:42px;} .offset12{margin-left:764px;} .offset11{margin-left:702px;} .offset10{margin-left:640px;} .offset9{margin-left:578px;} .offset8{margin-left:516px;} .offset7{margin-left:454px;} .offset6{margin-left:392px;} .offset5{margin-left:330px;} .offset4{margin-left:268px;} .offset3{margin-left:206px;} .offset2{margin-left:144px;} .offset1{margin-left:82px;} .row-fluid{width:100%;*zoom:1;}.row-fluid:before,.row-fluid:after{display:table;content:"";} .row-fluid:after{clear:both;} .row-fluid [class*="span"]{display:block;width:100%;min-height:28px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;float:left;margin-left:2.762430939%;*margin-left:2.709239449638298%;} .row-fluid [class*="span"]:first-child{margin-left:0;} .row-fluid .span12{width:99.999999993%;*width:99.9468085036383%;} .row-fluid .span11{width:91.436464082%;*width:91.38327259263829%;} .row-fluid .span10{width:82.87292817100001%;*width:82.8197366816383%;} .row-fluid .span9{width:74.30939226%;*width:74.25620077063829%;} .row-fluid .span8{width:65.74585634900001%;*width:65.6926648596383%;} .row-fluid .span7{width:57.182320438000005%;*width:57.129128948638304%;} .row-fluid .span6{width:48.618784527%;*width:48.5655930376383%;} .row-fluid .span5{width:40.055248616%;*width:40.0020571266383%;} .row-fluid .span4{width:31.491712705%;*width:31.4385212156383%;} .row-fluid .span3{width:22.928176794%;*width:22.874985304638297%;} .row-fluid .span2{width:14.364640883%;*width:14.311449393638298%;} .row-fluid .span1{width:5.801104972%;*width:5.747913482638298%;} input,textarea,.uneditable-input{margin-left:0;} input.span12, textarea.span12, .uneditable-input.span12{width:714px;} input.span11, textarea.span11, .uneditable-input.span11{width:652px;} input.span10, textarea.span10, .uneditable-input.span10{width:590px;} input.span9, textarea.span9, .uneditable-input.span9{width:528px;} input.span8, textarea.span8, .uneditable-input.span8{width:466px;} input.span7, textarea.span7, .uneditable-input.span7{width:404px;} input.span6, textarea.span6, .uneditable-input.span6{width:342px;} input.span5, textarea.span5, .uneditable-input.span5{width:280px;} input.span4, textarea.span4, .uneditable-input.span4{width:218px;} input.span3, textarea.span3, .uneditable-input.span3{width:156px;} input.span2, textarea.span2, .uneditable-input.span2{width:94px;} input.span1, textarea.span1, .uneditable-input.span1{width:32px;}}@media (min-width:1200px){.row{margin-left:-30px;*zoom:1;}.row:before,.row:after{display:table;content:"";} .row:after{clear:both;} [class*="span"]{float:left;margin-left:30px;} .container,.navbar-fixed-top .container,.navbar-fixed-bottom .container{width:1170px;} .span12{width:1170px;} .span11{width:1070px;} .span10{width:970px;} .span9{width:870px;} .span8{width:770px;} .span7{width:670px;} .span6{width:570px;} .span5{width:470px;} .span4{width:370px;} .span3{width:270px;} .span2{width:170px;} .span1{width:70px;} .offset12{margin-left:1230px;} .offset11{margin-left:1130px;} .offset10{margin-left:1030px;} .offset9{margin-left:930px;} .offset8{margin-left:830px;} .offset7{margin-left:730px;} .offset6{margin-left:630px;} .offset5{margin-left:530px;} .offset4{margin-left:430px;} .offset3{margin-left:330px;} .offset2{margin-left:230px;} .offset1{margin-left:130px;} .row-fluid{width:100%;*zoom:1;}.row-fluid:before,.row-fluid:after{display:table;content:"";} .row-fluid:after{clear:both;} .row-fluid [class*="span"]{display:block;width:100%;min-height:28px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;float:left;margin-left:2.564102564%;*margin-left:2.510911074638298%;} .row-fluid [class*="span"]:first-child{margin-left:0;} .row-fluid .span12{width:100%;*width:99.94680851063829%;} .row-fluid .span11{width:91.45299145300001%;*width:91.3997999636383%;} .row-fluid .span10{width:82.905982906%;*width:82.8527914166383%;} .row-fluid .span9{width:74.358974359%;*width:74.30578286963829%;} .row-fluid .span8{width:65.81196581200001%;*width:65.7587743226383%;} .row-fluid .span7{width:57.264957265%;*width:57.2117657756383%;} .row-fluid .span6{width:48.717948718%;*width:48.6647572286383%;} .row-fluid .span5{width:40.170940171000005%;*width:40.117748681638304%;} .row-fluid .span4{width:31.623931624%;*width:31.5707401346383%;} .row-fluid .span3{width:23.076923077%;*width:23.0237315876383%;} .row-fluid .span2{width:14.529914530000001%;*width:14.4767230406383%;} .row-fluid .span1{width:5.982905983%;*width:5.929714493638298%;} input,textarea,.uneditable-input{margin-left:0;} input.span12, textarea.span12, .uneditable-input.span12{width:1160px;} input.span11, textarea.span11, .uneditable-input.span11{width:1060px;} input.span10, textarea.span10, .uneditable-input.span10{width:960px;} input.span9, textarea.span9, .uneditable-input.span9{width:860px;} input.span8, textarea.span8, .uneditable-input.span8{width:760px;} input.span7, textarea.span7, .uneditable-input.span7{width:660px;} input.span6, textarea.span6, .uneditable-input.span6{width:560px;} input.span5, textarea.span5, .uneditable-input.span5{width:460px;} input.span4, textarea.span4, .uneditable-input.span4{width:360px;} input.span3, textarea.span3, .uneditable-input.span3{width:260px;} input.span2, textarea.span2, .uneditable-input.span2{width:160px;} input.span1, textarea.span1, .uneditable-input.span1{width:60px;} .thumbnails{margin-left:-30px;} .thumbnails>li{margin-left:30px;} .row-fluid .thumbnails{margin-left:0;}}
+
+        </style>
+    </head>
+    <body><div class="container-fluid">
+
+<h1>AIR QUALITY CONFORMITY STATUS</h1>
+
+<h2>Introduction</h2>
+<p>The Commonwealth of Massachusetts is classified as serious nonattainment for ozone, and is divided into two nonattainment areas.  The Eastern Massachusetts Ozone Nonattainment Area includes Barnstable, Bristol, Dukes, Essex, Middlesex, Nantucket, Norfolk, Suffolk, and Worcester counties.  Berkshire, Franklin, Hampden, and Hampshire counties comprise the Western Massachusetts Ozone Nonattainment Area.  With these classifications, the 1990 Clean Air Act Amendments (CAAA) required the Commonwealth to reduce its emissions of volatile organic compounds (VOCs) and nitrogen oxides (NOx), the two major precursors to ozone formation to achieve attainment of the ozone standard.</p>
+
+<p>In 2002, the cities of Lowell, Waltham, Worcester and Springfield were re-designated to attainment for carbon monoxide with EPA-approved limited maintenance plans. In April 1996, the communities of Boston, Cambridge, Chelsea, Everett, Malden, Medford, Quincy, Revere, and Somerville were classified as attainment for carbon monoxide (CO).  Air quality conformity analysis must still be completed in these communities, as they have a carbon monoxide maintenance plan approved into the state implementation plan (SIP).  The year 2010 carbon monoxide motor vehicle emission budget established for the Boston CO attainment area with a maintenance plan is 228.33 tons of carbon monoxide per winter day. </p>
+
+<p>The CAAA also required Metropolitan Planning Organizations (MPOs) within nonattainment areas to perform conformity determinations prior to the approval of their Regional Transportation Plans (RTPs) and Transportation Improvement Programs (TIPs). Periodically, air quality analyses are conducted on all the RTPs, the purposes of which are to evaluate the RTPs’ air quality impacts on the SIP.  Conformity determinations are then performed to ensure that all regionally significant projects are included in the RTPs and the TIPs, and that they meet the air quality goals of the SIP.  The Federal Highway Administration (FHWA) – in consultation with the Environmental Protection Agency (EPA New England) and the Massachusetts Department of Environmental Protection (DEP) – confirm and approve these conformity determinations (more details and background of major conformity milestones in recent years are provided in the each MPO’s 2012 Regional Transportation Plan). </p>
+
+<p>Previously, the Massachusetts Department of Transportation found the emission levels from the 2012 Regional Transportation Plans – as well as from the 2012-2015 TIPs – to be in conformance with the SIP.  Each MPO had certified (and continues to certify) that all activities outlined in its RTP and its TIP:<ul>
+
+<li>will not cause or contribute to any new violation of any standard in any area;</li>
+<li>will not increase the frequency or severity of any existing violation of any standard in any area; and,</li>
+<li>will not delay the timely attainment of any standard or any required interim emission reductions or other milestones in any area.</li></ul></p>
+
+<p>Key elements of this FY 2013–2016 STIP related to air quality conformity are as follows:<ul>
+<li>This STIP is financially constrained, and all projects in the STIP come from the conforming 2012 Regional Transportation Plan of each MPO.
+</li><li>All regionally significant RTP projects for 2013 through 2016 (both Federal and Non-Federal Aid) are programmed in the STIP.
+</li><li>All regionally significant projects included in the STIP have been included in the air quality analysis for the conforming Plan. These projects are of the same design and concept as presented in the 2012 conforming RTPs (projects in the STIP come from the conforming Plans).
+</li><li>In the Eastern Massachusetts Ozone Non-Attainment Area, a new conformity analysis was performed because certain regionally significant transportation project(s) programmed in the 2013-2016 TIPs (and included in the transportation models) changed their projected completion timeframe by crossing one or more milestone years used (2016, 2020, 2025, 2035), compared to the mix and timelines of projects assumed for the previously performed and approved conformity analyses done in 2011.
+</li><li>Specifically, the new conformity analysis (for Eastern Mass.) continued to demonstrate that emissions levels for all build scenarios remain below established emission budgets for all pollutants and all milestone years, meeting the federal conformity criteria (see emission tables).
+</li><li>All other of the latest planning assumptions (for both Eastern and Western Mass.) relative to conformity analyses (latest emission rates, latest socio-economic projections, etc.) remain unchanged from the previously completed and approved conformity analyses on each 2012-2015 TIP.
+</li><li>In the Western Massachusetts Ozone Non-Attainment Area, all regionally significant transportation projects programmed in each regional 2013-2016 TIP (and included in the transportation models) do not substantially change their projected completion timeframe by crossing any milestone years used (2016, 2020, 2025, 2035) for the most recently performed and approved conformity analyses done in 2011.
+</li><li>Therefore, for Western Massachusetts, with no changes to any of the assumptions, project timelines, or model inputs, the same conformity analysis performed and approved for last year’s STIP can be used once again with the 2013-2016 STIP for the determination of air quality conformity. 
+</li><li>Therefore, this STIP, as a product of the TIPs from all MPOs in both Massachusetts’ nonattainment areas, demonstrates air quality conformity.,</li></ul></p>
+
+<h2>Air Quality Conformity Analysis</h2>
+
+<p>On April 2, 2008, EPA found that the 2008 and 2009 motor vehicle emissions budgets (MVEBs) in the January 31, 2008 Massachusetts 8-hour ozone State Implementation Plan revision were adequate for transportation conformity purposes. The submittal included 2008 and 2009 MVEBs for the Boston-Lawrence-Worcester (Eastern Massachusetts) and Springfield (Western Massachusetts) 8-hour ozone nonattainment areas.  Massachusetts submitted these budgets as part of the 8-hour ozone attainment demonstration and reasonable further progress plan for both nonattainment areas, and as a result of EPA’s adequacy finding, these budgets were required to be used for conformity determinations. EPA later determined (in 2010) that only the most recent MVEBs  - 2009 -  be used for future conformity determinations. </p><p>
+
+In 2011, air quality analyses were conducted on behalf of all the 2012-2015 Regional Transportation Improvement Programs (TIPs), the purposes of which were to evaluate the TIPs’ air quality impacts on the SIP.  Conformity determinations were performed to ensure that all regionally significant projects were included in the TIPs.  The Massachusetts Department of Transportation found the emission levels from the 2012-2015 TIPs to be in conformance with the SIP.  On November 8, 2011, EPA confirmed that both the Eastern and Western Massachusetts Non-Attainment areas collectively demonstrated transportation conformity, with concurrence on the conformity analyses from Massachusetts DEP on 11/2/11. On November 30, 2011, FHWA and FTA determined that the TIPs were in conformity with the Clean Air Act and the EPA conformity regulations (40 CFR Part 51).</p>
+
+<h2>Conformity Test</h2>
+<p>The conformity test is to show consistency with the emissions budgets set forth in the SIP, and to contribute to reductions in CO nonattainment areas.  In addition, the format of the conformity test is determined by evolving regulations.  These regulations set specific requirements for different time periods depending on the timeframe of the Commonwealth’s SIP submittals to EPA.  These periods are defined below:</p><dl>
+
+<dt>Control Strategy Period:</dt><dd>Once a control strategy SIP has been submitted to EPA, EPA has to make a positive adequacy determination of the mobile source emission budget before such budget can be used for conformity purposes. The conformity test in this period is consistent with the mobile source emissions budget.</dd>
+
+<dt>Maintenance Period:</dt><dd> is the period of time beginning when the Commonwealth submits and EPA approves a request for redesignation to an attainment area, and lasting for 20 years.  The conformity test in this period is consistent with the mobile source emissions budget. </dd></dl>
+
+<p>Horizon years for regional and state model analyses have been established following 40 CFR 93.106(a) of the Federal Conformity Regulations.  The years for which the regional and state transportation models were run for ozone precursor emission estimates are shown below:</p><dl class="dl-horizontal">
+
+<dt>2010:</dt><dd> Milestone Year – This year is now being used by the statewide travel demand model as the new base year for calculation of emission reductions of VOCs and NOx.
+</dd><dt>2016:</dt><dd> Milestone Year and Analysis Year: This year is used to show conformity with the existing emission budgets for ozone precursors in Eastern and Western Massachusetts.
+</dd><dt>2020:</dt><dd> Analysis Year
+</dd><dt>2025: </dt><dd> Analysis Year
+</dd><dt>2035: </dt><dd> Horizon Year – last forecast year of the regional transportation plans</dd></dl>
+
+<p>The milestone and analysis year transportation model networks are composed of projects proposed in this 2013-2016 STIP.  Projects in these networks consist of all in-place “regionally significant” projects that can reasonably be expected to be completed by a given analysis/horizon year with consideration of available funding commitments.  This project group would include, but not be limited to, regionally significant projects where at least one of the following steps has occurred within the past three years:</p><ul>
+
+<li>Comes from the first year of a previously conforming TIP,</li>
+<li>Completed the NEPA process, or</li>
+<li>Currently under construction or are undergoing right-of-way acquisition</li></ul>
+
+<p>Based on these definitions – for the following three regions – there are no regionally significant projects included in each referenced 2012 regional transportation plan for the corresponding 2013-2016 regional transportation improvement program, and there have been no changes in project design since the last conformity determination:</p><ul>
+
+<li>Martha’s Vineyard Commission<a href="#note1"><sup>1</sup></a> (Eastern Massachusetts)</li>
+<li>Nantucket Planning and Economic Development Commission<a href="#note1"><sup>1</sup></a>  (Eastern Massachusetts) </li>
+<li>Franklin Regional Council of Governments<a href="#note1"><sup>1</sup></a>  (Western Massachusetts) </li></ul>
+
+
+<h2>Changes in Project Design since the Last Conformity Determination Analyses</h2>
+
+<p>The Commonwealth requires that any change in project design from the previous conformity determination for the region is identified. Changes that have occurred since the last conformity determination in 2011 are as follows:</p><ul>
+
+<li>In the Eastern Massachusetts Ozone Non-Attainment Area only, a new conformity analysis was performed because certain regionally significant transportation project(s) programmed in the 2013-2016 TIPs (and included in the transportation models) changed their projected completion timeframe by crossing one or more milestone years used (2016, 2020, 2025, 2035), compared to the mix and timelines of projects assumed for the previously performed and approved conformity analyses done in 2011. Note: In terms of anticipated completion timelines, only a single project necessitated a change across milestone years. While the new analysis did result in a non-zero change, the emissions difference from previous results was insignificant out to multiple decimal places – hence the final numbers in Tables <a href="#taq3">AQ-3</a> and <a href="#taq4">AQ-4</a> appear identical to the last conformity results from 2011.</li></ul>
+
+
+<h2>Latest Listings of Regionally Significant Projects used in the Conformity Analyses</h2>
+
+<p>A complete listing of future regionally significant projects for the entire Eastern (<a href="#taq1">Table AQ-1</a>) and Western (<a href="#taq2">Table AQ-2</a>) Massachusetts Ozone Non-Attainment Area follows:</p>
+<table class="table table-striped table-bordered table-condensed"><caption><hgroup><h2><a name="taq1">Table AQ-1</a></h2><h3>Regionally Significant Projects Included in the Regional Transportation Models for the Eastern Massachusetts Ozone Non-Attainment Area</h3></hgroup></caption>
+ <thead>
+  <tr>
+   <th scope="col">Analysis Year</th>
+   <th scope="col">Community</th>
+   <th scope="col">Description of Projects Under Construction – Boston Region</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+   <td>2016</td>
+   <td>Bedford, Burlington</td>
+   <td>Middlesex Turnpike Improvements Phases 1and 2</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Bellingham</td>
+   <td>Pulaski Boulevard</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Boston</td>
+   <td>Fairmount Line Improvements, including new stations</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Boston</td>
+   <td>East Boston Haul Road/Chelsea Truck Route (new grade separated roadway)</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Concord, Lincoln</td>
+   <td>East Boston Haul Road/Chelsea Truck Route (new grade separated roadway)</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Danvers</td>
+   <td>Route 128/Route 35 and Route 62</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Hudson</td>
+   <td>Route 85 (capacity improvements from Marlborough TL to Rt 62)</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Marshfield</td>
+   <td>Route 139 Widening (to 4 lanes between School St. and Furnace St.)</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Quincy</td>
+   <td>Quincy Center Concourse, Phase 2  (new roadway: Parking Way to Hancock St.)</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Randolph to Wellesley</td>
+   <td>Route 128 Additional Lanes</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Somerville</td>
+   <td>Assembly Square Orange Line Station </td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Somerville</td>
+   <td>Assembly Square Roadways (new and reconfigured)</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Weymouth, Hingham,  Rockland</td>
+   <td>South Weymouth Naval Air Station Access Improvements</td>
+  </tr>
+  <tr>
+   <td>2016</td>
+   <td>Regionwide</td>
+   <td>1000 Additional Park and Ride Spaces </td>
+  </tr>
+  
+ </tbody>
+ <thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>    <th scope='col'>Description of Recommended Plan Projects– Boston Region</th></tr></thead>
+<tbody> <tr> <td>2016</td>    <td>Beverly</td>	<td>Beverly Station Commuter Rail Parking Garage</td></tr>
+ <tr> <td>2016</td>	<td>Boston</td>	<td>Conley Haul Road </td></tr>
+ <tr> <td>2016</td>	<td>Hanover</td>	<td>Route 53 Final Phase (widening to 4 lanes between Rt 3 and Rt 123)</td></tr>
+ <tr> <td>2016</td>	<td>Salem</td>	<td>Salem Station Commuter Rail Parking Garage Expansion</td></tr>
+ <tr> <td>2016</td>	<td>Somerville, Cambridge, Medford</td>	<td>Green Line Extension to Medford Hillside/Union Square</td></tr>
+ <tr> <td>2016</td>	<td>Weymouth</td>	<td>Route 18 Capacity Improvements </td></tr>
+ <tr> <td>2020</td>	<td>Bedford, Burlington, Billerica</td>	<td>Middlesex Turnpike Improvements Phase 3 – widening Plank St. to Manning Rd.</td></tr>
+ <tr> <td>2020</td>	<td>Boston</td>	<td>Sullivan Square/Rutherford Avenue Improvements</td></tr>
+ <tr> <td>2020</td>	<td>Salem</td>	<td>Bridge Street (widening to 4 lanes between Flint and Washington St.)</td></tr>
+ <tr> <td>2020</td>	<td>Somerville, Medford</td>	<td>Green Line Extension to Mystic Valley Parkway (Route 16)</td></tr>
+ <tr> <td>2025</td>	<td>Canton</td>	<td>I-95 (NB)/Dedham Street Ramp/Dedham Street Corridor (new ramp with widening on Dedham St. from I-95 to University Ave.)</td></tr>
+ <tr> <td>2025</td>	<td>Canton</td>	<td>I-95/I-93 Interchange (new direct connect ramps)</td></tr>
+ <tr> <td>2025</td>	<td>Newton, Needham</td>	<td>Needham Street/Highland Avenue (includes widening Charles River Bridge)</td></tr>
+ <tr> <td>2025</td>	<td>Woburn</td>	<td>Montvale Avenue (widening between Central St. to east of Washington St.)</td></tr>
+ <tr> <td>2025</td>	<td>Woburn</td>	<td>New Boston Street Bridge (reestablish connection over MBTA Lowell line)</td></tr>
+ <tr> <td>2035</td>	<td>Braintree</td>	<td>Braintree Split - I-93/Route 3 Interchange </td></tr>
+ <tr> <td>2035</td>	<td>Framingham</td>	<td>Route 126/135 Grade Separation</td></tr>
+ <tr> <td>2035</td>	<td>Reading, Woburn, Stoneham</td>	<td>I-93/I-95 Interchange (new direct connect ramps)</td></tr>
+ <tr> <td>2035</td>	<td>Revere, Malden, Saugus</td>	<td>Route 1 (widening from 4 to 6 lanes between Copeland Circle and Rt. 99)</td></tr>
+ <tr> <td>2035</td>	<td>Wilmington</td>	<td>Tri-Town Interchange (new “Lowell Junction” interchange on I-93 between Route 125 and Dascomb Rd.)</td></tr></tbody>
+<thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description  - Cape Cod Region</th></tr></thead>
+<tbody> <tr> <td>2020</td>	<td>Barnstable</td>	<td>Yarmouth Rd. /Rt 28 (widening to 4 lanes) with Hyannis Access Improvements</td></tr>
+ <tr> <td>2025</td>	<td>Bourne</td>	<td>Route 6 Exit 1 WB on-ramp changes and interchange improvements</td></tr>
+ <tr> <td>2035</td>	<td>Bourne</td>	<td>Route 25 Access Ramp widening / Belmont Circle two-way travel</td></tr>
+ <tr> <td>2035</td>	<td>Capewide</td>	<td>Daily Passenger Rail Service: Hyannis to Buzzard’s Bay, Middleborough</td></tr>
+ <tr> <td>2035</td>	<td>Mashpee</td>	<td>Mashpee Rotary Ring Roads (connectors, Great Neck Rd, Routes 28 and151)</td></tr></tbody>
+<thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description  - Central Massachusetts Region</th></tr></thead>
+<tbody> <tr> <td>2016</td>	<td>Northborough</td>	<td>Rt 20 Church to South, signal coordination in corridor</td></tr>
+ <tr> <td>2016</td>	<td>Shrewsbury/Worcester</td>	<td>Rt 9 Bridge over Lake Quinsigamond: widening, additional lane each direction</td></tr>
+ <tr> <td>2016</td>	<td>Auburn</td>	<td>Rt 12/20 to Auburn TL capacity improvements and raised median</td></tr>
+ <tr> <td>2016</td>	<td>Worcester</td>	<td>Lincoln/Highland/Pleasant Streets intersection corridor improvements, minor widening, select signal coordination</td></tr>
+ <tr> <td>2016</td>	<td>Worcester</td>	<td>Route 20 Widening to a consistent 4 lanes</td></tr>
+ <tr> <td>2020</td>	<td>Charlton, Oxford</td>	<td>Route 20 Widening to a consistent 4 lanes</td></tr>
+ <tr> <td>2025</td>	<td>Westborough, Hopkinton</td>	<td>I-90/I-495 and I-495/Rt 9 Interchange Improvements (CD or frontage roads)</td></tr>
+ <tr> <td>2035</td>	<td>Worcester</td>	<td>Route 122/122A  Madison St/Chandler St. Kelley Square to Pleasant St:  various improvements and signal coordination</td></tr>
+ <tr> <td>2035</td>	<td>Worcester</td>	<td>I-290 Hope Ave. (to full interchange and roundabout at Webster and Hope)</td></tr>
+ <tr> <td>2035</td>	<td>Millbury, Sutton</td>	<td>Route 146 Improvements: Route 122A to Central Turnpike</td></tr></tbody>
+<thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description – Martha’s Vineyard Region</th></tr></thead>
+<tbody> <tr> <td>n/a</td>	<td>n/a</td>	<td>none</td></tr></tbody>
+<thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description – Merrimack Valley Region</th></tr></thead>
+<tbody> <tr> <td>2016</td>	<td>Amesbury</td>	<td>Route 110 from I-495 to I-95 (widen from 2 lanes to 4)</td></tr>
+ <tr> <td>2020</td>	<td>Newburyport, Amesbury</td>	<td>I-95 over Merrimack River (Whittier Bridge widening from 6 to 8 lanes)</td></tr>
+ <tr> <td>2020</td>	<td>Methuen</td>	<td>Route 110/113 (Methuen Rotary – new interchange ramps at I-93)</td></tr>
+ <tr> <td>2025</td>	<td>Lawrence, North Andover</td>	<td>Route 114 (widening from I-495 to Waverly Road)</td></tr>
+ <tr> <td>2035</td>	<td>Andover</td>	<td>Tri-Town Interchange (new “Lowell Junction” interchange on I-93 between Route 125 and Dascomb Rd.) and I-93 widening to 4 lanes in each direction from new interchange/current “lane drop” area to I-495.</td></tr>
+</tbody>
+<thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description – Montachusett Region</th></tr></thead>
+<tbody> <tr> <td>2016</td>	<td>Fitchburg/Westminster</td>	<td>New Wachusett Commuter Rail Station</td></tr>
+ <tr> <td>2016</td>	<td>Ayer to South Acton</td>	<td>Fitchburg Line Commuter Rail Improvements (double track)</td></tr>
+ <tr> <td>2020</td>	<td>Leominster</td>	<td>Route 13 Hawes St. to Prospect St. (some widening, new signals, etc)</td></tr>
+ <tr> <td>2025</td>	<td>Athol</td>	<td>New Interchange on Route 2 at South Athol Road</td></tr></tbody>
+<thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description – Nantucket Region</th></tr></thead>
+<tbody> <tr> <td>n/a</td>	<td>n/a</td>	<td>none</td></tr></tbody><thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description – Northern Middlesex Region</th></tr></thead>
+<tbody> <tr> <td>2016</td>	<td>Westford</td>	<td>Route 110  Minot’s Corner to Nixon widen to 4 lanes</td></tr>
+ <tr> <td>2020</td>	<td>Billerica</td>	<td>Middlesex Turnpike Improvements Phase 3 – widening Plank St. to Manning Rd.</td></tr>
+ <tr> <td>2035</td>	<td>Tewksbury</td>	<td>Tri-Town Interchange (new “Lowell Junction” interchange on I-93 between Route 125 and Dascomb Rd.) and I-93 widening to 4 lanes in each direction from new interchange/current “lane drop” area to I-495.</td></tr>
+ <tr> <td>2035</td>	<td>Westford</td>	<td>I-495 at Boston Road (Exit 32) widening of on and off ramps </td></tr>
+ <tr> <td>2035</td>	<td>Lowell, Tewksbury, Chelmsford, and Westford</td>	<td>I-495 Additional travel lane each direction between Exits 32 and 35 and between Exits 37 and 40 </td></tr>
+ <tr> <td>2035</td>	<td>Lowell</td>	<td>Wood Street, Rourke Bridge: new bridge, widening and corridor improvements</td></tr>
+</tbody>
+<thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description – Old Colony Region</th></tr></thead>
+<tbody> <tr> <td>2016</td>	<td>Abington</td>	<td>Route 18 - Widening to 4 Lanes from Route 139 to Highland Rd.</td></tr>
+ <tr> <td>2020</td>	<td>Brockton</td>	<td>Route 123 - Widen from Route 24 to Angus Beaton Drive </td></tr>
+ <tr> <td>2020</td>	<td>Bridgewater</td>	<td>Route 24 - Add Northbound Slip Ramp from Route 104 WB to Route 24 NB Northbound</td></tr>
+ 
+
+ <tr> <td>2020</td>	<td>Plymouth</td>	<td>Route 3 - Add Northbound on-Ramp at Long Pond Road (Exit 5)</td></tr>
+ <tr> <td>2020</td>	<td>Plymouth</td>	<td>Long Pond Road Bridge widening (Exit 5)</td></tr>
+ <tr> <td>2025</td>	<td>Brockton</td>	<td>Main Street, Warren Avenue, Spring Street, West Elm Street, Belmont Street - Reestablish Two-Way Circulation</td></tr>
+ <tr> <td>2025</td>	<td>West Bridgewater</td>	<td>Route 106 - Widening from 2 to 4 Lanes between Route 24 and Route 28</td></tr>
+
+ <tr> <td>2035</td>	<td>Plymouth</td>	<td>Route 3 – Add NB Off-ramp to Plimouth Plantation Hwy (Exit 4)</td></tr>
+ <tr> <td>2035</td>	<td>Plymouth</td>	<td>Route 25 - Add New Interchange Before Exit 1 and connect to Bourne Road</td></tr>
+ <tr> <td>2035</td>	<td>West Bridgewater</td>	<td>Route 28, Route 106, Central Square Signal and intersection coordination</td></tr>
+</tbody><thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description – Southeastern Massachusetts Region</th></tr></thead>
+<tbody> <tr> <td>2016</td>	<td>Fall River, Somerset</td>	<td>New Brightman Street Bridge - capacity improvements to 4 lane divided facility</td></tr>
+ <tr> <td>2016</td>	<td>Fall River</td>	<td>Route 79/Davol Street (interchange improvements and new traffic circulation)</td></tr>
+ <tr> <td>2016</td>	<td>Freetown</td>	<td>Route 24 - New Interchange (Exit 8 ½)</td></tr>
+ <tr> <td>2016</td>	<td>Mansfield</td>	<td>Route 140 / I-495 New Southbound On-Ramp</td></tr>
+ <tr> <td>2020</td>	<td>Dartmouth</td>	<td>Route 6 (Faunce Corner Rd) / I-195 Interchange - Bridge Widening to 5 Lanes</td></tr>
+ <tr> <td>2035</td>	<td>Taunton</td>	<td>Route 24 / 140 - Interchange Reconstruction</td></tr>
+</tbody>
+
+</table>
+<p>
+The transportation air quality conformity analyses prepared for the 2013 – 2016 Regional Transportation Improvement Programs (and collectively, this State TIP) also serve to demonstrate transportation air quality conformity to the Regional Transportation Plans in Massachusetts.  All regionally significant transportation projects in the FFY 2013 – 2016 transportation improvement programs are contained in the 2012 transportation plans (with any amendments).  Furthermore, all regionally significant projects in the 2016 to 2035 timeframe of all the transportation plans are modeled in the FFY 2013 – 2016 Transportation Improvement Programs’ transportation air quality conformity analyses.
+</p>
+<table class="table table-striped table-bordered table-condensed"><caption><hgroup><h2><a name="taq2">Table AQ-2</a></h2>
+<h3>Regionally Significant Projects Included in the Regional Transportation Models for the Western Massachusetts Ozone Non-Attainment Area</h3></hgroup></caption>
+<thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description – Pioneer Valley Region</th></tr></thead>
+<tbody> <tr> <td>2016</td>	<td>Chicopee</td>	<td>Deady Bridge signal coordination: Broadway/Montgomery, Main, and Belcher Streets</td></tr>
+ <tr> <td>2016</td>	<td>Hadley</td>	<td>Route 9 widening Home Depot to Lowes.</td></tr>
+ <tr> <td>2016</td>	<td>Holyoke, W.Springfield</td>	<td>Route 5 signal coordination from Ashley Ave. to Main St.</td></tr>
+ <tr> <td>2016</td>	<td>Springfield,Wilbraham</td>	<td>Boston Rd. signal coordination Pasco Rd. to Stony Hill Rd.</td></tr>
+ <tr> <td>2016</td>	<td>Westfield</td>	<td>Route 10/202 Great River Bridge - two bridges acting as one-way pairs.</td></tr>
+ <tr> <td>2016</td>	<td>West Springfield</td>	<td>Improve the Union Street Railroad Underpass.  Construct a truck bypass road.</td></tr>
+ <tr> <td>2016</td>	<td>Through Region</td>	<td>Additional “Vermonter” passenger rail service</td></tr>
+ <tr> <td>2020</td>	<td>Chicopee/South Hadley</td>	<td>Route 33 signal coordination and upgrades from Abbey St. to Fuller Rd.</td></tr>
+ <tr> <td>2020</td>	<td>Hadley</td>	<td>Route 9 widening Middle Street to Lowes.</td></tr>
+ <tr> <td>2020</td>	<td>Ludlow</td>	<td>Route 21 Center Street reconstruction and widening with center turn lane</td></tr>
+ <tr> <td>2020</td>	<td>Northampton</td>	<td>Damon Rd. widening, improvements from Rte 9 to King St.</td></tr>
+ <tr> <td>2020</td>	<td>Through Region</td>	<td>New Commuter Rail Service: Hartford, CT to Greenfield, MA</td></tr>
+ <tr> <td>2025</td>	<td>Agawam</td>	<td>Connector, Route 5 to Route 57, eliminate rotary.</td></tr>
+ <tr> <td>2025</td>	<td>Holyoke</td>	<td>Linden St. signal coordination and improvements at 5 intersections.</td></tr>
+ <tr> <td>2025</td>	<td>Longmeadow</td>	<td>Route 5 signal coordination, improvements Converse St to Springfield city line.</td></tr>
+ <tr> <td>2025</td>	<td>Westfield</td>	<td>Route 10/202 Elm Street, North Elm Street signal coordination.</td></tr>
+ <tr> <td>2035</td>	<td>Agawam, Longmeadow, Springfield</td>	<td>South End Bridge improvements, including related work on I-91 between Exits 1-3.</td></tr>
+ <tr> <td>2035</td>	<td>Agawam, West Springfield</td>	<td>Improvement to Route 5 access ramps for truck routing, route into CSX rail yard.</td></tr>
+
+</tbody><thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description – Berkshire Region</th></tr></thead>
+<tbody> <tr> <td>2016</td>	<td>Great Barrington</td>	<td>Main St .intersection improvements, signalization upgrades and add turning lanes</td></tr>
+ <tr> <td>2020</td>	<td>Pittsfield</td>	<td>Intersection widening, turning lane improvements First/Tyler & Tyler/Stoddard Ave</td></tr>
+ <tr> <td>2025</td>	<td>Great Barrington</td>	<td>Realign & widen State Rd., including new bridge to replace the current Brown Bridge</td></tr>
+ <tr> <td>2025</td>	<td>Lanesboro/Cheshire</td>	<td>Construct passing lanes on Route 8 between Mall Road and truck weighing station</td></tr>
+ <tr> <td>2025</td>	<td>Pittsfield</td>	<td>Safety and capacity improvements on East St. between Elm St. and Merrill Road</td></tr>
+ <tr> <td>2035</td>	<td>Pittsfield</td>	<td>Construct connector street from W. Housatonic St. to West St. near CSX yard</td></tr>
+</tbody><thead> <tr>   <th scope='col'>Analysis Year</th>    <th scope='col'>Community</th>	<th scope='col'>Project Description  - Franklin Region</th></tr></thead>
+<tbody> <tr> <td>2016</td>	<td>Through Region</td>	<td>Additional “Vermonter” passenger rail service</td></tr>
+ <tr> <td>2020</td>	<td>Greenfield, Deerfield, Whately</td>	<td>New Commuter Rail Service: Hartford, CT to Greenfield, MA</td></tr>
+
+
+
+</tbody></table>
+<h2>Air Quality Conformity Analysis</h2>
+<p>Specific information regarding the analysis methods, latest planning assumptions, and consultation procedures are all detailed in the 2012 RTPs.  The emissions from the following MPOs have been combined to show conformity with the SIP for the Eastern Massachusetts Nonattainment Area:</p>
+<ul><li> Cape Cod MPO
+</li><li>Central Massachusetts MPO
+</li><li>Merrimack Valley MPO
+</li><li>Boston MPO
+</li><li>Montachusett Region MPO
+</li><li>Northern Middlesex MPO
+</li><li>Old Colony MPO
+</li><li>Southeastern Region MPO
+</li><li>Martha's Vineyard Commission<a href="#note1"><sup>1</sup></a>
+</li><li>Nantucket Planning and Economic Development Commission<a href="#note1"><sup>1</sup></a></li></ul>
+
+<p>The emissions from the following MPOs have been combined to show conformity with the SIP for the Western Massachusetts Nonattainment Area:
+</p><ul>
+<li>Berkshire Region MPO</li>
+</li><li>Franklin Regional Council of Governments<a href="#note1"><sup>1</sup></a>
+</li><li>Pioneer Valley MPO</li></ul>
+<p>Using the latest planning assumptions, MassDOT’s Office of Transportation Planning estimated the emissions for VOC and NOx from all MPOs through a combination of the statewide and selected regional travel demand models (and with assistance from MPO staff).  The VOC mobile source emission budget for 2009 (and beyond) for the Eastern Massachusetts Nonattainment Area has been set at 63.50 tons per summer day (TPSD) and the 2009 (and beyond) mobile source emission budget for NOx is 174.96 TPSD (Tables <a href="#taq3">AQ-3</a> and <a href="#taq4">AQ-4</a>).  For the Western Massachusetts Nonattainment Area (Tables <a href="#taq5">AQ-5</a> and <a href="#taq6">AQ-6</a>), the 2009 (and beyond) VOC mobile source emission budget has been set at 10.73 TPSD, while the 2009 (and beyond) mobile source emission budget for NOx is 27.73 TPSD.  As shown in the tables, the results of the air quality analyses demonstrate that the VOC and NOx emissions from all action scenarios are less that the VOC and NOx emissions budgets for both non-attainment areas.</p>
+<table class="table table-striped table-bordered table-condensed">
+<caption><hgroup>
+<h2><a name="taq3">TABLE AQ-3</a></h2>
+<h3>VOC Emissions Estimates for the Eastern Massachusetts Ozone Nonattainment Area</h3>
+<h4>all emissions in tons per summer day</h4></hgroup>
+</caption>
+<thead> <tr>   <th scope='col'>Year</th>    <th scope='col'>Eastern MA Action Emissions</th>	<th scope='col'>Budget</th>	<th scope='col'>Difference  (Action – Budget)</th></tr></thead>
+<tbody> <tr> <td>2010</td>	<td>64.974</td>	<td>n/a</td>	<td>n/a</td></tr>
+ <tr> <td>2016</td>	<td>36.232</td>	<td>63.5</td>	<td>-27.268</td></tr>
+ <tr> <td>2020</td>	<td>32.386</td>	<td>63.5</td>	<td>-31.114</td></tr>
+ <tr> <td>2025</td>	<td>30.988</td>	<td>63.5</td>	<td>-32.512</td></tr>
+ <tr> <td>2035</td>	<td>31.063</td>	<td>63.5</td>	<td>-32.437</td></tr>
+</tbody>
+</table>
+<table class="table table-striped table-bordered table-condensed">
+<caption><hgroup>
+<h2><a name="taq4">TABLE AQ-4</a></h2>
+<h3>NOx Emissions Estimates for the Eastern Massachusetts Ozone Nonattainment Area</h3>
+<h4>all emissions in tons per summer day</h4>
+</hgroup></caption>
+<thead> <tr>   <th scope='col'>Year</th>    <th scope='col'>Eastern MA Action Emissions</th>	<th scope='col'>Budget</th>	<th scope='col'>Difference  (Action – Budget)</th></tr></thead>
+<tbody> <tr> <td>2010</td>	<td>234.85</td>	<td>n/a</td>	<td>n/a</td></tr>
+ <tr> <td>2016</td>	<td>66.219</td>	<td>174.96</td>	<td>-108.741</td></tr>
+ <tr> <td>2020</td>	<td>45.188</td>	<td>174.96</td>	<td>-129.772</td></tr>
+ <tr> <td>2025</td>	<td>36.521</td>	<td>174.96</td>	<td>-138.439</td></tr>
+ <tr> <td>2035</td>	<td>29.038</td>	<td>174.96</td>	<td>-145.922</td></tr></tbody>
+
+</table>
+<table class="table table-striped table-bordered table-condensed">
+<caption><hgroup>
+<h2><a name="taq5">TABLE AQ-5</a></h2>
+<h3>VOC Emissions Estimates for the Western Massachusetts Ozone Nonattainment Area</h3>
+<h4>all emissions in tons per summer day</h4>
+</hgroup></caption>
+<thead> <tr>   <th scope='col'>Year</th>    <th scope='col'>Western MA Action Emissions</th>	<th scope='col'>Budget</th>	<th scope='col'>Difference  (Action – Budget)</th></tr></thead>
+<tbody> <tr> <td>2010</td>	<td>10.947</td>	<td>n/a</td>	<td>n/a</td></tr>
+ <tr> <td>2016</td>	<td>6.832</td>	<td>10.73</td>	<td>-3.898</td></tr>
+ <tr> <td>2020</td>	<td>5.979</td>	<td>10.73</td>	<td>-4.751</td></tr>
+ <tr> <td>2025</td>	<td>5.534</td>	<td>10.73</td>	<td>-5.196</td></tr>
+ <tr> <td>2035</td>	<td>5.602</td>	<td>10.73</td>	<td>-5.128</td></tr></tbody>
+
+</table>
+<table class="table table-striped table-bordered table-condensed">
+<caption><hgroup>
+<h2><a name="taq6">TABLE AQ-6</a></a></h2>
+<h3>NOx Emissions Estimates for the Western Massachusetts Ozone Nonattainment Area</h3>
+<h4>all emissions in tons per summer day</h4>
+</hgroup></caption>
+<thead> <tr>   <th scope='col'>Year</th>    <th scope='col'>Western MA Action Emissions</th>	<th scope='col'>Budget</th>	<th scope='col'>Difference  (Action – Budget)</th></tr></thead>
+<tbody> <tr> <td>2010</td>	<td>27.736</td>	<td>n/a</td>	<td>n/a</td></tr>
+ <tr> <td>2016</td>	<td>11.751</td>	<td>27.73</td>	<td>-15.979</td></tr>
+ <tr> <td>2020</td>	<td>7.732</td>	<td>27.73</td>	<td>-19.998</td></tr>
+ <tr> <td>2025</td>	<td>5.774</td>	<td>27.73</td>	<td>-21.956</td></tr>
+ <tr> <td>2035</td>	<td>5.018</td>	<td>27.73</td>	<td>-22.712</td></tr></tbody>
+
+</table>
+<p>In summary, each Eastern Massachusetts MPO and each Western Massachusetts MPO has found that the emission levels from its FY 2013-2016 TIP, in combination with the emission levels from the other MPOs in its nonattainment area, demonstrate conformity with the SIP, the Clean Air Act, and the EPA conformity regulations (40 CFR part 51) as required.</p>
+
+<p>All the regional TIPs are derived from regional transportation plans that meet the conformity requirements.  The applicable MPO conformity determinations have been prepared in accordance with EPA’s and Massachusetts’ final conformity regulations.  These conformity determinations show that the 2013-2016 Statewide TIP – as a product of all the regional TIPs – has been prepared following all the guidelines and requirements of these rules during this time period.</p>
+
+<p>Therefore, the implementation of the FFY 2013-2016 Statewide Transportation Improvement Program is consistent with the air quality goals, and in conformity with, the Massachusetts State Implementation Plan.</p>
+
+
+<p><a name="note1"><sup>1</sup></a>These regions do not contain any official urbanized areas, but are considered to be MPOs for planning purposes.</p>
+  </div>  </body>
+</html>
