@@ -1,5 +1,19 @@
 <html>
-  <head>
+  <head><style>
+  #chart{width: 900px; height: 500px;float:left}
+  .cwm-stuff{
+  float:left;
+  clear:none;
+  }
+  .cwm-red{
+  color:white;
+  background-color:#ff0000;
+  }
+  .cwm-blue{
+  color:white;
+  background-color:#0000ff;
+  }
+  </style>
     <script type='text/javascript' src='https://www.google.com/jsapi'></script>
     <script type='text/javascript'>
      google.load('visualization', '1', {'packages': ['geochart']});
@@ -70,13 +84,25 @@
  },
  resolution:'provinces'};
 
-        var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.GeoChart(document.getElementById('chart'));
         chart.draw(data, options);
     };
     </script><title>Fire Works Legality</title>
   </head>
-  <body><hrgroup><h1>Fire Works Legality by State</h1></hrgroup>
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
-    <ol><li>illegal</li><li>Sparklers Only</li><li>legal</li></ol><p>Source:<ul><li><a target="_blank" href="http://americanpyro.com/State%20Laws%20%28main%29/statelaws.html">American Pyro</a></li><li>via <a target="_blank" href="http://gizmodo.com/5923151/the-fireworks-laws-of-every-state">Gizmodo</a></li></ul></p>
+  <body><hrgroup><h1>Fire Works Legality by State</h1></hrgroup><div id="chart"></div><div class="cwm-stuff">
+    <ol start="0"><li><span class='cwm-blue'>Illegal</span></li><li>Sparklers Only</li><li><span class='cwm-red'>Legal</span></li></ol><p>Source:<ul><li><a target="_blank" href="http://americanpyro.com/State%20Laws%20%28main%29/statelaws.html">American Pyro</a></li><li>via <a target="_blank" href="http://gizmodo.com/5923151/the-fireworks-laws-of-every-state">Gizmodo</a></li></ul></p></div>
+    <script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-31218444-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
   </body>
 </html>  
